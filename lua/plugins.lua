@@ -40,6 +40,12 @@ return require('packer').startup(function(use)
     "glepnir/lspsaga.nvim",
     branch = "main",
   })
+  -- show git sign
   use 'lewis6991/gitsigns.nvim'
+  -- use git command in neovim
   use 'dinhhuy258/git.nvim'
+  -- use mason manager
+  use "williamboman/mason.nvim"
+  -- a bridge between mason and lspconfig
+  use "williamboman/mason-lspconfig.nvim"
 end)
