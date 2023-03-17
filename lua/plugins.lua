@@ -4,10 +4,10 @@ return require('packer').startup(function(use)
   use {
     'svrana/neosolarized.nvim',
     requires = { 'tjdevries/colorbuddy.nvim' }
-  } 
+  }
   use {
-  'nvim-lualine/lualine.nvim',
-  requires = { 'kyazdani42/nvim-web-devicons', opt = true }
+    'nvim-lualine/lualine.nvim',
+    requires = { 'kyazdani42/nvim-web-devicons', opt = true }
   }
   use 'neovim/nvim-lspconfig'
   use 'onsails/lspkind.nvim'
@@ -26,11 +26,11 @@ return require('packer').startup(function(use)
   use 'windwp/nvim-ts-autotag'
   -- telescope
   use {
-  'nvim-telescope/telescope.nvim', tag = '0.1.1',
-  requires = { {'nvim-lua/plenary.nvim'} }
-}
+    'nvim-telescope/telescope.nvim', tag = '0.1.1',
+    requires = { { 'nvim-lua/plenary.nvim' } }
+  }
   use 'nvim-telescope/telescope-file-browser.nvim'
-  use {'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }
+  use { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }
   -- devicons
   use 'nvim-tree/nvim-web-devicons'
   -- tab with bufferline
@@ -39,7 +39,6 @@ return require('packer').startup(function(use)
   use({
     "glepnir/lspsaga.nvim",
     branch = "main",
-})
+  })
+  use 'lewis6991/gitsigns.nvim'
 end)
-
-
