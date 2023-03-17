@@ -41,4 +41,5 @@ return require('packer').startup(function(use)
     branch = "main",
   })
   use 'lewis6991/gitsigns.nvim'
+  use 'dinhhuy258/git.nvim'
 end)
