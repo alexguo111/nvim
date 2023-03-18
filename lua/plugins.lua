@@ -48,4 +48,5 @@ return require('packer').startup(function(use)
   use "williamboman/mason.nvim"
   -- a bridge between mason and lspconfig
   use "williamboman/mason-lspconfig.nvim"
+  use 'mfussenegger/nvim-dap'
 end)
