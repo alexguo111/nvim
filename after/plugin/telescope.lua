@@ -5,7 +5,6 @@ vim.keymap.set('n', 'fb', builtin.buffers, {})
 vim.keymap.set('n', 'fh', builtin.help_tags, {})
 
 local tel = require("telescope")
---local actions = require("telescope.actions")
 --local action_layout = require("telescope.actions.layout")
 local fb_actions = require "telescope".extensions.file_browser.actions
 
@@ -21,6 +20,10 @@ end
 --  { noremap = true }
 --)
 
+-- using trouble plugin with telescope
+local actions = require("telescope.actions")
+local trouble = require("trouble.providers.telescope")
+
 tel.setup{
   defaults = {
     mappings = {
@@ -29,9 +32,11 @@ tel.setup{
        -- ["<C-s>"] = actions.cycle_previewers_next,
        -- ["<C-a>"] = actions.cycle_previewers_prev,
        -- ["<C-p>"] = action_layout.toggle_preview,
+        ["<C-t>"] = trouble.open_with_trouble,
       },
       n = {
 --        ["<C-p>"] = action_layout.toggle_preview
+        ["<C-t>"] = trouble.open_with_trouble
       },
     }
   },
