@@ -51,4 +51,6 @@ return require('packer').startup(function(use)
   use 'mfussenegger/nvim-dap'
   -- trouble
   use "folke/trouble.nvim"
+  -- use null-ls as linter and formatter
+  use "jose-elias-alvarez/null-ls.nvim"
 end)
