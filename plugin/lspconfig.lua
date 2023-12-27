@@ -157,3 +157,12 @@ require 'lspconfig'.html.setup {
   on_attach = on_attach,
   flags = lsp_flags,
 }
+
+
+-- for yaml, json, yml
+-- this LSP server is installed by mason
+require 'lspconfig'.spectral.setup {
+  capabilities = capabilities,
+  on_attach = on_attach,
+  flags = lsp_flags,
+}

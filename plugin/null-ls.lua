@@ -5,7 +5,7 @@ local augroup = vim.api.nvim_create_augroup("null_ls formatting", {})
 require("null-ls").setup({
   on_attach = function(client, bufnr)
     local bufopts = { noremap = true, silent = true, buffer = bufnr }
-    --    vim.keymap.set('n', '<space>f', function() vim.lsp.buf.format { async = true } end, bufopts)
+    vim.keymap.set('n', '<space>f', function() vim.lsp.buf.format { async = true } end, bufopts)
     print("Null_ls attached to the buffer")
     local result = client.supports_method
     if result then
@@ -29,5 +29,8 @@ require("null-ls").setup({
     --null_ls.builtins.formatting.clang_format,  -- format C/C++
     --null_ls.builtins.code_actions.eslint
     --    null_ls.builtins.diagnostics.eslint_d
+    --null_ls.builtins.formatting.prettier.with({
+    --  filetypes = { "json", "yaml", "markdown" },
+    --}),
   }
 })
