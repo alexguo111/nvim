@@ -3,8 +3,8 @@ require('lualine').setup {
     icons_enabled = true,
     --theme = 'powerline_dark',
     --theme = 'onedark',
-    theme = 'moonfly',
-    --theme = 'nightfly',
+    --theme = 'moonfly',
+    theme = 'nightfly',
     --theme = 'solarized_dark',
     --theme = 'papercolor_dark',
     section_separators = { left = '', right = '' },
@@ -17,12 +17,20 @@ require('lualine').setup {
     lualine_c = { {
       'filename',
       file_status = true, -- displays file status (readonly status, modified status)
-      path = 0 -- 0 = just filename, 1 = relative path, 2 = absolute path
-    },    
-  },
+      path = 0            -- 0 = just filename, 1 = relative path, 2 = absolute path
+    },
+    },
     lualine_x = {
-      { 'diagnostics', sources = { "nvim_diagnostic" }, symbols = { error = ' ', warn = ' ', info = ' ',
-        hint = ' ' } },
+      {
+        'diagnostics',
+        sources = { "nvim_diagnostic" },
+        symbols = {
+          error = ' ',
+          warn = ' ',
+          info = ' ',
+          hint = ' '
+        }
+      },
       'encoding',
       'filetype'
     },
@@ -35,7 +43,7 @@ require('lualine').setup {
     lualine_c = { {
       'filename',
       file_status = true, -- displays file status (readonly status, modified status)
-      path = 1 -- 0 = just filename, 1 = relative path, 2 = absolute path
+      path = 1            -- 0 = just filename, 1 = relative path, 2 = absolute path
     } },
     lualine_x = { 'location' },
     lualine_y = {},
