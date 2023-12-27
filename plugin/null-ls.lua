@@ -27,7 +27,8 @@ require("null-ls").setup({
     null_ls.builtins.formatting.black, -- formatting python
     --null_ls.builtins.formatting.prettier,
     --null_ls.builtins.formatting.clang_format,  -- format C/C++
-    --null_ls.builtins.code_actions.eslint
+    -- null_ls.builtins.code_actions.eslint
+    --    null_ls.builtins.diagnostics.eslint
     --    null_ls.builtins.diagnostics.eslint_d
     --null_ls.builtins.formatting.prettier.with({
     --  filetypes = { "json", "yaml", "markdown" },
