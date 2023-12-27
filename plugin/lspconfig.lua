@@ -31,18 +31,21 @@ local on_attach = function(client, bufnr)
   vim.keymap.set('n', 'gr', vim.lsp.buf.references, bufopts)
   vim.keymap.set('n', '<space>f', function() vim.lsp.buf.format { async = true } end, bufopts)
   -- add format-on-save functionality
-  --  if client.supports_method("textDocument/formatting") then
-  vim.api.nvim_clear_autocmds({ group = augroup, buffer = bufnr })
-  vim.api.nvim_create_autocmd("BufWritePre", {
-    group = augroup,
-    buffer = bufnr,
-    callback = function()
-      -- on 0.8, you should use vim.lsp.buf.format({ bufnr = bufnr }) instead
-      --        vim.lsp.buf.formatting_sync()
-      vim.lsp.buf.format({ bufnr = bufnr })
-    end,
-  })
-  --  end
+  local result = client.supports_method("textDocument/formatting")
+  if result then
+    print("LSP support formatting")
+    vim.api.nvim_clear_autocmds({ group = augroup, buffer = bufnr })
+    vim.api.nvim_create_autocmd("BufWritePre", {
+      group = augroup,
+      buffer = bufnr,
+      callback = function()
+        print("Using builtin format!")
+        vim.lsp.buf.format({ bufnr = bufnr })
+      end,
+    })
+  else
+    print("Attention: LSP does not support formatting for this file type")
+  end
 end
 
 local lsp_flags = {
@@ -50,60 +53,59 @@ local lsp_flags = {
   debounce_text_changes = 150,
 }
 
+--local capabilities = require('cmp_nvim_lsp').default_capabilities()
+local capabilities = vim.lsp.protocol.make_client_capabilities()
+capabilities.textDocument.completion.completionItem.snippetSupport = true
 -- Set up lspconfig.
-local capabilities = require('cmp_nvim_lsp').default_capabilities()
-
 local lspconfig = require('lspconfig')
-lspconfig.ccls.setup {
-  capabilities = capabilities,
-  init_options = {
-    compilationDatabaseDirectory = "build",
-    index = {
-      threads = 0,
-    },
-    clang = {
-      excludeArgs = { "-frounding-math" },
-    },
-  },
-  on_attach = on_attach,
-  flags = lsp_flags,
-}
 
+-- for { "c", "cpp", "objc", "objcpp", "cuda" }
+--lspconfig.ccls.setup {
+--  capabilities = capabilities,
+--  on_attach = on_attach,
+--  flags = lsp_flags,
+--  init_options = {
+--    compilationDatabaseDirectory = "build",
+--    index = {
+--      threads = 0,
+--    },
+--    clang = {
+--      excludeArgs = { "-frounding-math" },
+--    },
+--  },
+--}
+
+
+-- { "javascript", "javascriptreact", "javascript.jsx", "typescript", "typescriptreact", "typescript.tsx" }
 lspconfig.tsserver.setup {
   on_attach = on_attach,
   flags = lsp_flags,
   capabilities = capabilities,
 }
 
---require'lspconfig'.clangd.setup{
---  on_attach = on_attach,
---  flags = lsp_flags,
---  capabilities = capabilities,
---}
+-- for cpp
+require 'lspconfig'.clangd.setup {
+  on_attach = on_attach,
+  flags = lsp_flags,
+  capabilities = capabilities,
+}
 
 
+-- for python
 lspconfig.pyright.setup {
   on_attach = on_attach,
   flags = lsp_flags,
   capabilities = capabilities,
 }
 
-require 'lspconfig'.yamlls.setup {
+-- for ansible
+require 'lspconfig'.ansiblels.setup {
   on_attach = on_attach,
   flags = lsp_flags,
   capabilities = capabilities,
-  settings = {
-    yaml = {
-      schemas = {
-        ["https://json.schemastore.org/github-workflow.json"] = "/.github/workflows/*",
-        ["../path/relative/to/file.yml"] = "/.github/workflows/*",
-        ["/path/from/root/of/project"] = "/.github/workflows/*",
-        ["https://raw.githubusercontent.com/instrumenta/kubernetes-json-schema/master/v1.18.0-standalone-strict/all.json"] = "/*.k8s.yaml"
-      },
-    },
-  }
 }
 
+-- for lua
 lspconfig.lua_ls.setup {
   capabilities = capabilities,
   on_attach = on_attach,
@@ -128,4 +130,30 @@ lspconfig.lua_ls.setup {
       },
     },
   },
+}
+
+--capabilities = vim.lsp.protocol.make_client_capabilities()
+--capabilities.textDocument.completion.completionItem.snippetSupport = true
+
+-- for css
+require 'lspconfig'.cssls.setup {
+  capabilities = capabilities,
+  on_attach = on_attach,
+  flags = lsp_flags,
+}
+
+
+-- { "json", "jsonc" }
+require 'lspconfig'.jsonls.setup {
+  capabilities = capabilities,
+  on_attach = on_attach,
+  flags = lsp_flags,
+}
+
+
+-- for html
+require 'lspconfig'.html.setup {
+  capabilities = capabilities,
+  on_attach = on_attach,
+  flags = lsp_flags,
 }
