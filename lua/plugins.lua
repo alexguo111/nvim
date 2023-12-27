@@ -51,7 +51,10 @@ return require('packer').startup(function(use)
   use "williamboman/mason.nvim"
   -- a bridge between mason and lspconfig
   use "williamboman/mason-lspconfig.nvim"
+  -- for debug
   use 'mfussenegger/nvim-dap'
+  use { "rcarriga/nvim-dap-ui", requires = { "mfussenegger/nvim-dap" } }
+  use 'folke/neodev.nvim'
   -- trouble
   use "folke/trouble.nvim"
   -- use null-ls as linter and formatter
