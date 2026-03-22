@@ -1,10 +1,17 @@
 return require('packer').startup(function(use)
   -- Packer can manage itself
   use 'wbthomason/packer.nvim'
+  -- themes
   use {
     'svrana/neosolarized.nvim',
     requires = { 'tjdevries/colorbuddy.nvim' }
   }
+
+  use 'folke/tokyonight.nvim'
+  use 'catppuccin/nvim'
+  use 'rebelot/kanagawa.nvim'
+  use 'rose-pine/neovim'
+  use 'ellisonleao/gruvbox.nvim'
   use {
     'nvim-lualine/lualine.nvim',
     requires = { 'kyazdani42/nvim-web-devicons', opt = true }
@@ -19,6 +26,7 @@ return require('packer').startup(function(use)
   use 'hrsh7th/nvim-cmp'
   use 'hrsh7th/cmp-path'
   use 'hrsh7th/cmp-cmdline'
+  use "nvim-neotest/nvim-nio"
   -- use snip engine
   use 'L3MON4D3/LuaSnip'
   use 'saadparwaiz1/cmp_luasnip'
@@ -58,5 +66,6 @@ return require('packer').startup(function(use)
   -- trouble
   use "folke/trouble.nvim"
   -- use null-ls as linter and formatter
-  use "jose-elias-alvarez/null-ls.nvim"
+  -- use "jose-elias-alvarez/null-ls.nvim"
+  use "nvimtools/none-ls.nvim"
 end)

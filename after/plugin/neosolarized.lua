@@ -1,5 +1,6 @@
 require('neosolarized').setup({
 })
+-- vim.cmd.colorscheme('neosolarized')
 local cb = require('colorbuddy.init')
 local Color = cb.Color
 local colors = cb.colors
@@ -14,10 +15,14 @@ Group.new('CursorLine', colors.none, colors.base03, styles.NONE, colors.base1)
 Group.new('CursorLineNr', colors.yellow, colors.black, styles.NONE, colors.base1)
 Group.new('Visual', colors.none, colors.base03, styles.reverse)
 
-local cError = groups.Error.fg
-local cInfo = groups.Information.fg
-local cWarn = groups.Warning.fg
-local cHint = groups.Hint.fg
+--local cError = groups.Error.fg
+--local cInfo = groups.Information.fg
+--local cWarn = groups.Warning.fg
+--local cHint = groups.Hint.fg
+local cError = groups.Error.fg or colors.red
+local cInfo = groups.DiagnosticInfo.fg or colors.blue
+local cWarn = groups.DiagnosticWarn.fg or colors.yellow
+local cHint = groups.DiagnosticHint.fg or colors.cyan
 
 Group.new("DiagnosticVirtualTextError", cError, cError:dark():dark():dark():dark(), styles.NONE)
 Group.new("DiagnosticVirtualTextInfo", cInfo, cInfo:dark():dark():dark(), styles.NONE)

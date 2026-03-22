@@ -2,6 +2,8 @@ require('base')
 require('highlight')
 require('maps')
 require('plugins')
+require('themes')
+require("autocmds")
 
 local has = vim.fn.has
 local is_mac = has "unix"
