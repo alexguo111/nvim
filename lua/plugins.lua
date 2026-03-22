@@ -12,6 +12,18 @@ return require('packer').startup(function(use)
   use 'rebelot/kanagawa.nvim'
   use 'rose-pine/neovim'
   use 'ellisonleao/gruvbox.nvim'
+  use 'projekt0n/github-nvim-theme'
+  use 'AlexvZyl/nordic.nvim'
+  use 'EdenEast/nightfox.nvim'
+  use 'sainnhe/everforest'
+  use 'Mofiqul/dracula.nvim'
+  use 'navarasu/onedark.nvim'
+  use 'marko-cerovac/material.nvim'
+  use 'loctvl842/monokai-pro.nvim'
+  use 'savq/melange-nvim'
+  use 'ribru17/bamboo.nvim'
+  use 'scottmckendry/cyberdream.nvim'
+  use 'nyoom-engineering/oxocarbon.nvim'
   use {
     'nvim-lualine/lualine.nvim',
     requires = { 'kyazdani42/nvim-web-devicons', opt = true }
