@@ -29,8 +29,10 @@ vim.opt.tabstop = 2
 
 -- display command like %s dynamically
 vim.opt.inccommand = 'split'
--- ingnore case of the search keyword
+-- Case-insensitive search by default; smartcase makes it automatically
+-- case-sensitive when the pattern contains any uppercase letter
 vim.opt.ignorecase = true
+vim.opt.smartcase = true
 -- indent from the breakpoint of the line if line exceeds to width of the screen
 vim.opt.breakindent = true
 -- autoindent
